@@ -1,0 +1,9 @@
+Revision history for Bryar-DataSource-Multiplex
+
+0.12    2004-10-26 18:20
+        removed stupid leftover Dumper call
+        remembered to require DS class when searching one DS
+
+0.10    2004-10-22 18:00
+        readied for release
+
