@@ -1,5 +1,8 @@
 Revision history for Bryar-DataSource-Multiplex
 
+0.121   2006-11-06
+        perl-critic tests
+
 0.12    2004-10-26 18:20
         removed stupid leftover Dumper call
         remembered to require DS class when searching one DS

@@ -10,13 +10,13 @@ Bryar::DataSource::Multiplex - multiplex Bryar datasources
 
 =head1 VERSION
 
-version 0.12
+version 0.121
 
- $Id: Multiplex.pm,v 1.2 2004/10/26 22:19:03 rjbs Exp $
+ $Id$
 
 =cut
 
-our $VERSION = '0.12';
+our $VERSION = '0.121';
 
 =head1 DESCRIPTION
 
@@ -53,13 +53,17 @@ sub search {
 	if ($params{id} and $params{id} =~ /:/) {
 		my ($sourceid, $docid) = $params{id} =~ /(.*?):(.*)/;
 		my ($source) = grep { $_->{id} eq $sourceid } @{$config->{sources}};
+    ## no critic (ProhibitStringyEval)
 		eval "require $source->{source};";
+    ## use critic
 		return $source->{source}->search($source, (%params, id => $docid));
 	}
 
 	my @documents;
 	for my $source (@{$config->{sources}}) {
+    ## no critic (ProhibitStringyEval)
 		eval "require $source->{source};";
+    ## use critic
 		push @documents,
 			map { $_->{id} = "$source->{id}:$_->{id}"; $_ }
 			$source->{source}->search($source, %params);
@@ -81,7 +85,9 @@ sub all_documents {
 
 	my @documents;
 	for my $source (@{$config->{sources}}) {
+    ## no critic (ProhibitStringyEval)
 		eval "require $source->{source};";
+    ## use critic
 		push @documents,
 			map { $_->{id} = "$source->{id}:$_->{id}"; $_ }
 			$source->{source}->all_documents($source);
@@ -103,7 +109,7 @@ notified of progress on your bug as I make changes.
 
 =head1 COPYRIGHT
 
-Copyright 2004 Ricardo Signes, All Rights Reserved.
+Copyright 2004-2006 Ricardo Signes, All Rights Reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
