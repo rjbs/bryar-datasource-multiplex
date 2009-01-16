@@ -1,5 +1,8 @@
 Revision history for Bryar-DataSource-Multiplex
 
+0.122   2009-01-16
+        add repo to dist
+
 0.121   2006-11-06
         license
         perl-critic tests

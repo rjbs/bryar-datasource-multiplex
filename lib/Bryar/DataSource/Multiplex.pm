@@ -10,13 +10,13 @@ Bryar::DataSource::Multiplex - multiplex Bryar datasources
 
 =head1 VERSION
 
-version 0.121
+version 0.122
 
  $Id$
 
 =cut
 
-our $VERSION = '0.121';
+our $VERSION = '0.122';
 
 =head1 DESCRIPTION
 
